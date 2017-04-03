@@ -6,26 +6,24 @@ import store from '../store';
 
 class FilterableArtistsContainer extends React.Component {
 
-  constructor() {
+  constructor(props) {
 
-    super();
-
+    super(props);
     this.state = Object.assign({
       inputValue: ''
-    }, store.getState().artists);
+    }, props.artists);
 
     this.handleChange = this.handleChange.bind(this);
 
   }
 
   componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState().artists);
-    });
+    this.state = Object.assign({
+      inputValue: ''
+    }, this.props.artists);
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
   }
 
   handleChange(evt) {
@@ -35,7 +33,6 @@ class FilterableArtistsContainer extends React.Component {
   }
 
   render() {
-
     const inputValue = this.state.inputValue;
     const filteredArtists = this.state.list.filter(artist => artist.name.match(inputValue));
 
@@ -50,22 +47,5 @@ class FilterableArtistsContainer extends React.Component {
     );
   }
 }
-
-// function mapStateToProps(state, ownProps){
-//   console.log(ownProps)
-//   return {
-//     artists: state.artists.list
-//   }
-// }
-//
-// function mapDispatchToProps(dispatch){
-//   return {
-//     // handleChange: function (event) {
-//     //    inputValue event.target.value
-//     }
-//
-// }
-//
-// const FilterableArtistsContainer = connect(mapStateToProps, mapDispatchToProps)(Artists)
 
 export default FilterableArtistsContainer;

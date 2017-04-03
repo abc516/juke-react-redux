@@ -6,48 +6,51 @@ import Player from '../components/Player';
 
 class PlayerContainer extends Component {
 
-  constructor() {
-    super();
-    this.state = store.getState().player;
-    this.toggle = this.toggle.bind(this);
+  constructor(props) {
+    super(props);
+    console.log('my super props', props)
   }
 
   componentDidMount() {
 
-    AUDIO.addEventListener('ended', this.next);
+    AUDIO.addEventListener('ended', this.props.next);
     AUDIO.addEventListener('timeupdate', () => {
-      store.dispatch(setProgress(AUDIO.currentTime / AUDIO.duration));
+      this.props.setProgress(AUDIO.currentTime / AUDIO.duration);
     });
 
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState().player);
-    });
+    // this.unsubscribe = store.subscribe(() => {
+    //   this.setState(store.getState().player);
+    // });
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    // this.unsubscribe();
   }
 
   next() {
-    store.dispatch(next());
+    // store.dispatch(next());
   }
 
   prev() {
-    store.dispatch(previous());
+    // store.dispatch(previous());
   }
 
   toggle() {
-    store.dispatch(
-      toggleSong(this.state.currentSong, this.state.currentSongList)
-    );
+    // store.dispatch(
+    //   toggleSong(this.state.currentSong, this.state.currentSongList)
+    // );
   }
 
+// FIX PROGRESS BAR PLAY STOP NEXT BACK IN PLAYER WRAPPER
   render() {
+    console.log('progress here', this.props)
     return <Player
-      {...this.state}
-      next={this.next}
-      prev={this.prev}
-      toggle={this.toggle}
+      player={this.props}
+      next={this.props.next}
+      prev={this.props.prev}
+      toggle={this.props.toggle}
+      currentSong={this.props.currentSong}
+      progress={this.props.progress}
     />;
   }
 

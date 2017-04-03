@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import SidebarContainer from '../containers/SidebarContainer';
-import PlayerContainer from '../containers/PlayerContainer';
+import PlayerWrapper from '../containers/PlayerWrapper';
 
 export default function App ({ children }) {
   return (
@@ -12,7 +12,7 @@ export default function App ({ children }) {
       <div className="col-xs-10">
         { children }
       </div>
-      <PlayerContainer />
+      <PlayerWrapper />
     </div>
   );
 }
