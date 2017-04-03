@@ -6,8 +6,11 @@ export default function Station (props) {
   const genre = props.genre;
   return (
     <div>
-    <h3> {genre} </h3>
-    <Songs songs={props.songs} currentSong={props.currentSong} isPlaying={props.isPlaying} toggle={props.toggleOne} />
+    <h3> {genre} Station</h3>
+    <Songs songs={props.songs}
+      currentSong={props.currentSong}
+      isPlaying={props.isPlaying}
+      toggle={props.toggleOne} />
     </div>
   )
 }

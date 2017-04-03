@@ -18,7 +18,7 @@ export default function Album (props) {
         songs={album.songs}
         currentSong={currentSong}
         isPlaying={isPlaying}
-        toggleOne={toggleOne}/>
+        toggle={toggleOne}/>
     </div>
   );
 

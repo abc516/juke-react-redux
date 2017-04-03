@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterInput from '../components/FilterInput';
 import Artists from '../components/Artists';
-
+import {connect} from 'react-redux'
 import store from '../store';
 
 class FilterableArtistsContainer extends React.Component {
@@ -50,5 +50,22 @@ class FilterableArtistsContainer extends React.Component {
     );
   }
 }
+
+// function mapStateToProps(state, ownProps){
+//   console.log(ownProps)
+//   return {
+//     artists: state.artists.list
+//   }
+// }
+//
+// function mapDispatchToProps(dispatch){
+//   return {
+//     // handleChange: function (event) {
+//     //    inputValue event.target.value
+//     }
+//
+// }
+//
+// const FilterableArtistsContainer = connect(mapStateToProps, mapDispatchToProps)(Artists)
 
 export default FilterableArtistsContainer;
