@@ -4,13 +4,11 @@ import Stations from '../components/Stations'
 function convertSongsToStations(songsArray){
 
   const stations = {}
-
   songsArray.forEach((song) => {
     const genre = song.genre
     stations[genre] = stations[genre] || []
     stations[genre].push(song)
   })
-  
   return stations
 }
 
